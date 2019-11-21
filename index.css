@@ -40,3 +40,8 @@ h2{
 	text-align: center;
 	min-width: 300px;
 }
+
+footer{
+	position: fixed;
+	bottom: 0;
+}
