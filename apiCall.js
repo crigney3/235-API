@@ -1,6 +1,6 @@
 // 1
 window.onload = (e) => {document.querySelector("#search").onclick = searchButtonClicked;
-getSet();};
+};
 	
 // 2
 let displayTerm = "";
