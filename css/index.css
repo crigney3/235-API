@@ -2,7 +2,7 @@ body{
 	margin: 2rem;
 	color: white;
 	
-	background: url(background.jpg);
+	background: url(../images/background.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
