@@ -1,9 +1,16 @@
-header{
-	text-align: center;
-}
-
 body{
 	margin: 2rem;
+	color: white;
+	
+	background: url(background.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+}
+
+header{
+	text-align: center;
 }
 
 h2{
@@ -14,7 +21,7 @@ h2{
 	display: flex;
 }
 
-.searchers{
+.searchers, #status, footer{
 	margin: 1rem;
 }
 
@@ -32,8 +39,4 @@ h2{
 	margin: 1rem;
 	text-align: center;
 	min-width: 300px;
-}
-
-footer{
-	margin: 1rem;
 }
