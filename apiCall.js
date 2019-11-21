@@ -93,7 +93,7 @@ function dataLoaded(e){
         }
 
         let smallURL = result.imgGold;
-        if(!smallURL) smallURL = "images/no-image-found.png";
+        if(!smallURL) smallURL = "ImageNotFound.png";
 
         let url = result.url;
 
