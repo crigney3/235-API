@@ -85,8 +85,8 @@ function dataLoaded(e){
 
         let url = result.url;
 
-        line = `<div class='title'><h4>${results[i].name}</h4>`
-        line += `<div class='image'><img src='${results[i].imgGold}' title='${results[i].name}' />`;
+        line = `<div class='card'><div class='title'><h4>${results[i].name}</h4></div>`
+        line += `<div class='image'><img src='${results[i].imgGold}' title='${results[i].name}' /></div></div>`;
 
         bigString += line;
     }
