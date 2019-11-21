@@ -1,5 +1,21 @@
+header{
+	text-align: center;
+}
+
 body{
 	margin: 2rem;
+}
+
+h2{
+	text-align: center;
+}
+
+#filter{
+	display: flex;
+}
+
+.searchers{
+	margin: 1rem;
 }
 
 #content{
@@ -8,8 +24,16 @@ body{
 	grid-gap: 10px;
 }
 
+#content p{
+	text-align: center;
+}
+
 .card{
 	margin: 1rem;
 	text-align: center;
 	min-width: 300px;
+}
+
+footer{
+	margin: 1rem;
 }
