@@ -93,12 +93,11 @@ function dataLoaded(e){
         }
 
         let smallURL = result.imgGold;
-        if(!smallURL) smallURL = "ImageNotFound.png";
 
         let url = result.url;
 
         line = `<div class='card'><div class='title'><h4>${results[i].name}</h4></div>`
-        line += `<div class='image'><img src='${results[i].imgGold}' title='${results[i].name}' /></div></div>`;
+        line += `<div class='image'><img src='${smallURL}' onerror="this.onerror=null;this.src='ImageNotFound.png';" title='${results[i].name}' /></div></div>`;
 
         bigString += line;
     }
