@@ -13,6 +13,22 @@ header{
 	text-align: center;
 }
 
+h1{
+	font-size: 80px;
+}
+
+@media only screen and (max-width: 600px){
+	h1{
+		font-size: 60px;
+	}
+}
+
+@media only screen and (max-width: 375px){
+	h1{
+		font-size: 40px;
+	}
+}
+
 h2{
 	text-align: center;
 }
@@ -21,7 +37,13 @@ h2{
 	display: flex;
 }
 
-.searchers, #status, footer{
+@media only screen and (max-width: 425px){
+	#filter{
+		flex-direction: column;
+	}
+}
+
+.searchers, #status, footer, .card{
 	margin: 1rem;
 }
 
@@ -36,9 +58,12 @@ h2{
 }
 
 .card{
-	margin: 1rem;
 	text-align: center;
 	min-width: 300px;
+}
+
+.title{
+	font-size: 24px;
 }
 
 footer{
