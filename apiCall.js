@@ -1,6 +1,6 @@
 // 1
 window.onload = (e) => {document.querySelector("#search").onclick = searchButtonClicked;
-};
+document.querySelector("#searchSet").onclick = setSearchButtonClicked};
 	
 // 2
 let displayTerm = "";
@@ -8,13 +8,14 @@ let displayTerm = "";
 // Currently set to pick the set in the search box
 function searchButtonClicked(){
     console.log("searchButtonClicked() called");
-    
-    const BLIZZARD_URL = "https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/search/";
-    //const BLIZZARD_KEY = "fa9fb7142dmsh9fdc1344c4d46c5p11b649jsn97699a6a8d0f";
-    //Key is embedded in the headers
 
-    let url = BLIZZARD_URL;
-    //url += "api_key=" + BLIZZARD_KEY;
+    let term = document.querySelector("#nameSearch").value;
+    
+    searchCard(term);
+}
+
+function setSearchButtonClicked(){
+    console.log("setSearchButtonClicked() called");
 
     let term = document.querySelector("#setSearch").value;
     
@@ -38,7 +39,7 @@ function searchCard(card="wisp"){
 
     card = encodeURIComponent(card);
 
-    if(set.length < 1) return;
+    if(card.length < 1) return;
 
     const BLIZZARD_URL = "https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/search/" + card;
 
@@ -75,10 +76,21 @@ function dataLoaded(e){
     //console.log("results.length = " + results.length);
     //let bigString = "<p><i>Here are " + results.length + " results for '" + displayTerm + "'</i></p>";
 
-    for(let i=0; i<results.length;i++){
+    let length = results.length;
+
+    length > 200 ? length = 200 : length = results.length; 
+
+    console.log(length);
+
+    for(let i=0; i<length;i++){
+        if(i > results.length - 1) break;
+
         let result = results[i];
 
-        if(result.collectible != true) continue;
+        if(result.collectible != true) {
+            length += 1;
+            continue;
+        }
 
         let smallURL = result.imgGold;
         if(!smallURL) smallURL = "images/no-image-found.png";
