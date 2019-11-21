@@ -10,45 +10,51 @@
 <body>
     <script src="apiCall.js"></script>
     
-    <div class="header">
+    <header>
+        <h1>Hearthstone Card Library</h1>
+    </header>
 
-    </div>
+    <main>
+        <div id="status"></div>
 
-    <div id="status"></div>
+        <div class="searchers">
+            <p class="searchLabel">Set</p>
+            <input id='setSearch' type="text" autofocus value="Classic"/>
+        </div>
 
-    <div class="searchers">
-        <p class="searchLabel">Set</p>
-        <input id='setSearch' type="text" autofocus value="Classic"/>
-    </div>
+        <div class="searchers">
+                <p class="searchLabel">Name</p>
+                <input id='nameSearch' type="text" autofocus value="Innervate"/>
+        </div>
 
-    <div class="searchers">
-            <p class="searchLabel">Name</p>
-            <input id='nameSearch' type="text" autofocus value="Innervate"/>
-    </div>
+        <div class="searchers">
+            <button id="searchSet" type="button">Search Card Sets!</button>
+        </div>
 
-    <div class="searchers">
-        <button id="searchSet" type="button">Search Card Sets!</button>
-    </div>
+        <!-- <div class="searchers">
+                <p class="searchLabel"></p>
+                <div class="radio">
+                    <input type="radio" name="rarity" value="Common"/>
+                    <input type="radio" name="rarity" value="Rare"/>
+                    <input type="radio" name="rarity" value="Epic"/>
+                    <input type="radio" name="rarity" value="Legendary"/>
+                </div>         
+        </div> -->
 
-    <!-- <div class="searchers">
-            <p class="searchLabel"></p>
-            <div class="radio">
-                <input type="radio" name="rarity" value="Common"/>
-                <input type="radio" name="rarity" value="Rare"/>
-                <input type="radio" name="rarity" value="Epic"/>
-                <input type="radio" name="rarity" value="Legendary"/>
-            </div>         
-    </div> -->
+        <div class="searchers">
+            <button id="search" type="button">Search!</button>
+        </div>
 
-    <div class="searchers">
-        <button id="search" type="button">Search!</button>
-    </div>
+        <div id="status">Returned Classic Set!</div>
 
-    <div id="status">Returned Classic Set!</div>
+        <h2>Results</h2>
+        <div id="content">
+            <p>Try searching for a card or set!</p>
+        </div>
+    </main>
 
-    <h2>Results</h2>
-    <div id="content">
-        <p>Try searching for a card or set!</p>
-    </div>
+    <footer>
+
+    </footer>
 </body>
 </html>
