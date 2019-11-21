@@ -5,12 +5,13 @@ getSet();};
 // 2
 let displayTerm = "";
 
-// 3
+// Currently set to pick the set in the search box
 function searchButtonClicked(){
     console.log("searchButtonClicked() called");
     
     const BLIZZARD_URL = "https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/search/";
     //const BLIZZARD_KEY = "fa9fb7142dmsh9fdc1344c4d46c5p11b649jsn97699a6a8d0f";
+    //Key is embedded in the headers
 
     let url = BLIZZARD_URL;
     //url += "api_key=" + BLIZZARD_KEY;
@@ -28,6 +29,18 @@ function getSet(set="Classic"){
     if(set.length < 1) return;
 
     const BLIZZARD_URL = "https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/sets/" + set;
+
+    getData(BLIZZARD_URL);
+}
+
+function searchCard(card="wisp"){
+    card = card.trim();
+
+    card = encodeURIComponent(card);
+
+    if(set.length < 1) return;
+
+    const BLIZZARD_URL = "https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/search/" + card;
 
     getData(BLIZZARD_URL);
 }
