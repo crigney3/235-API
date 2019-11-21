@@ -1,0 +1,11 @@
+#content{
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	grid-gap: 10px;
+}
+
+.card{
+	margin: 1rem;
+	text-align: center;
+	min-width: 300px;
+}
