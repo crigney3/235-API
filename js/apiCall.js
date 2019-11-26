@@ -1,27 +1,36 @@
 // on load, hook up clicking the buttons to searching and searching by set
 // rarity searching is applied to both, sets are not applied to regular search
+let term = "";
 window.onload = (e) => {document.querySelector("#search").onclick = searchButtonClicked;
-document.querySelector("#searchSet").onclick = setSearchButtonClicked};
-	
-// 2
-let displayTerm = "";
+document.querySelector("#searchSet").onclick = setSearchButtonClicked;
+if(localStorage.getItem("term")){
+    document.querySelector("#nameSearch").value = localStorage.getItem("term");
+}
+};
+
+if(!localStorage.getItem("term")){
+    term = "";
+}
+else{
+    term = localStorage.getItem("term");
+}
 
 //Both these functions just get the term, then call the API
 function searchButtonClicked(){
-    let term = document.querySelector("#nameSearch").value;
+    term = document.querySelector("#nameSearch").value;
     
+    localStorage.setItem("term", term);
+
     searchCard(term);
 }
 
 function setSearchButtonClicked(){
-    let term = document.querySelector("#setSearch").value;
+    let setTerm = document.querySelector("#setSearch").value;
     
     getSet(term);
 }
 
 function checkboxFilter(e){
-    //console.log("checkboxFilter() called");
-
     let commonCheckbox = document.querySelector("#Common");
     let rareCheckbox = document.querySelector("#Rare");
     let epicCheckbox = document.querySelector("#Epic");
@@ -122,11 +131,11 @@ function dataLoaded(e){
     let length = results.length;
 
     // Finds the desired length from the quantity dropdown
-    //let desiredLength = document.querySelector("#quantity").value;
+    let desiredLength = document.querySelector("#quantity").value;
 
     // If "All" is selected, the desired length is set to int.MaxValue
-    //if(desiredLength == "All")
-        //desiredLength = Number.MAX_VALUE;
+    if(desiredLength == "All")
+        desiredLength = Number.MAX_VALUE;
 
     length > desiredLength ? length = desiredLength : length = results.length; 
 
