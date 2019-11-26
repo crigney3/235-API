@@ -22,6 +22,15 @@ function setSearchButtonClicked(){
     getSet(term);
 }
 
+function radioButtonClicked(){
+    console.log("radioButtonClicked() called");
+
+    let commonCB = document.querySelector("#Common");
+    let rareCB = document.querySelector("#Rare");
+    let epicCB = document.querySelector("#Epic");
+    let legendary = document.querySelector("#Legendary");
+}
+
 function getSet(set="Classic"){
     set = set.trim();
 
