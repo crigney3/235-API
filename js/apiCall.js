@@ -1,22 +1,19 @@
-// 1
+// on load, hook up clicking the buttons to searching and searching by set
+// rarity searching is applied to both, sets are not applied to regular search
 window.onload = (e) => {document.querySelector("#search").onclick = searchButtonClicked;
 document.querySelector("#searchSet").onclick = setSearchButtonClicked};
 	
 // 2
 let displayTerm = "";
 
-// Currently set to pick the set in the search box
+//Both these functions just get the term, then call the API
 function searchButtonClicked(){
-    //console.log("searchButtonClicked() called");
-
     let term = document.querySelector("#nameSearch").value;
     
     searchCard(term);
 }
 
 function setSearchButtonClicked(){
-    //console.log("setSearchButtonClicked() called");
-
     let term = document.querySelector("#setSearch").value;
     
     getSet(term);
@@ -68,6 +65,7 @@ function checkboxFilter(e){
     return cardList;
 }
 
+//Gets a set var, trims and encodes, checks length, makes the URL, and calls the API
 function getSet(set="Classic"){
     set = set.trim();
 
@@ -80,6 +78,7 @@ function getSet(set="Classic"){
     getData(BLIZZARD_URL);
 }
 
+//Same as above, but for a card search
 function searchCard(card="wisp"){
     card = card.trim();
 
@@ -92,6 +91,7 @@ function searchCard(card="wisp"){
     getData(BLIZZARD_URL);
 }
 
+//Sends headers with the API key
 function getData(url){
     let xhr = new XMLHttpRequest();
 
@@ -105,10 +105,9 @@ function getData(url){
     xhr.send();
 }
 
+//Handles data once it's acquired
 function dataLoaded(e){
     let xhr = e.target;
-
-    //console.log(xhr.responseText);
 
     let results = JSON.parse(xhr.responseText);
 
@@ -119,26 +118,24 @@ function dataLoaded(e){
 
     console.log(results);
     bigString='';
-    //console.log("results.length = " + results.length);
-    //let bigString = "<p><i>Here are " + results.length + " results for '" + displayTerm + "'</i></p>";
 
     let length = results.length;
 
     // Finds the desired length from the quantity dropdown
-    let desiredLength = document.querySelector("#quantity").value;
+    //let desiredLength = document.querySelector("#quantity").value;
 
     // If "All" is selected, the desired length is set to int.MaxValue
-    if(desiredLength == "All")
-        desiredLength = Number.MAX_VALUE;
+    //if(desiredLength == "All")
+        //desiredLength = Number.MAX_VALUE;
 
     length > desiredLength ? length = desiredLength : length = results.length; 
 
     console.log(length);
-    console.log(desiredLength);
 
     // Filters resulting list of cards by quality/rarity
     results = checkboxFilter(results);
 
+    //Loops through results and creates html
     for(let i = 0; i < length; i++){
         if(i > results.length - 1) break;
 
@@ -154,6 +151,7 @@ function dataLoaded(e){
         let url = result.url;
 
         line = `<div class='card'><div class='title'><h4>${results[i].name}</h4></div>`
+        //The onerror fucntion in here handles the case of a not found card image
         line += `<div class='image'><img src='${smallURL}' onerror="this.onerror=null;this.src='../images/ImageNotFound3.png';style='object-fit=none;';" title='${results[i].name}' /></div></div>`;
 
         bigString += line;
