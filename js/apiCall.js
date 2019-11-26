@@ -22,13 +22,48 @@ function setSearchButtonClicked(){
     getSet(term);
 }
 
-function radioButtonClicked(){
-    console.log("radioButtonClicked() called");
+function checkboxFilter(e){
+    console.log("checkboxFilter() called");
 
-    let commonCB = document.querySelector("#Common");
-    let rareCB = document.querySelector("#Rare");
-    let epicCB = document.querySelector("#Epic");
-    let legendary = document.querySelector("#Legendary");
+    let commonCheckbox = document.querySelector("#Common");
+    let rareCheckbox = document.querySelector("#Rare");
+    let epicCheckbox = document.querySelector("#Epic");
+    let legendaryCheckbox = document.querySelector("#Legendary");
+    
+    let cardList = [];
+
+    // First checks if no checkbox, or all checkboxes are checked
+    // In this case, no filter will be applied
+    if((commonCheckbox.checked == false) &&
+        (rareCheckbox.checked == false) &&
+        (epicCheckbox.checked == false) &&
+        (legendaryCheckbox.checked == false)) 
+        return e;
+
+    for(let i = 0; i < e.length; i++)
+    {
+        switch(e[i].rarity)
+        {
+            case "Common":
+                if(commonCheckbox.checked == true)
+                    cardList.push(e[i]);
+                break;
+            case "Rare":
+                if(rareCheckbox.checked == true)
+                    cardList.push(e[i]);
+                break;
+            case "Epic":
+                if(epicCheckbox.checked == true)
+                    cardList.push(e[i]);
+                break;
+            case "Legendary":
+                if(legendaryCheckbox.checked == true)
+                    cardList.push(e[i]);
+                break;
+        }
+    }
+
+    return cardList;
 }
 
 function getSet(set="Classic"){
@@ -90,6 +125,9 @@ function dataLoaded(e){
     length > 200 ? length = 200 : length = results.length; 
 
     console.log(length);
+
+    // Filters resulting list of cards by quality/rarity
+    results = checkboxFilter(results);
 
     for(let i=0; i<length;i++){
         if(i > results.length - 1) break;
