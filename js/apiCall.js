@@ -7,7 +7,7 @@ let displayTerm = "";
 
 // Currently set to pick the set in the search box
 function searchButtonClicked(){
-    console.log("searchButtonClicked() called");
+    //console.log("searchButtonClicked() called");
 
     let term = document.querySelector("#nameSearch").value;
     
@@ -15,7 +15,7 @@ function searchButtonClicked(){
 }
 
 function setSearchButtonClicked(){
-    console.log("setSearchButtonClicked() called");
+    //console.log("setSearchButtonClicked() called");
 
     let term = document.querySelector("#setSearch").value;
     
@@ -23,7 +23,7 @@ function setSearchButtonClicked(){
 }
 
 function checkboxFilter(e){
-    console.log("checkboxFilter() called");
+    //console.log("checkboxFilter() called");
 
     let commonCheckbox = document.querySelector("#Common");
     let rareCheckbox = document.querySelector("#Rare");
@@ -108,7 +108,7 @@ function getData(url){
 function dataLoaded(e){
     let xhr = e.target;
 
-    console.log(xhr.responseText);
+    //console.log(xhr.responseText);
 
     let results = JSON.parse(xhr.responseText);
 
@@ -124,20 +124,28 @@ function dataLoaded(e){
 
     let length = results.length;
 
-    length > 200 ? length = 200 : length = results.length; 
+    // Finds the desired length from the quantity dropdown
+    let desiredLength = document.querySelector("#quantity").value;
+
+    // If "All" is selected, the desired length is set to int.MaxValue
+    if(desiredLength == "All")
+        desiredLength = Number.MAX_VALUE;
+
+    length > desiredLength ? length = desiredLength : length = results.length; 
 
     console.log(length);
+    console.log(desiredLength);
 
     // Filters resulting list of cards by quality/rarity
     results = checkboxFilter(results);
 
-    for(let i=0; i<length;i++){
+    for(let i = 0; i < length; i++){
         if(i > results.length - 1) break;
 
         let result = results[i];
 
         if(result.collectible != true) {
-            length += 1;
+            length = Number(length) + 1;
             continue;
         }
 
@@ -152,7 +160,7 @@ function dataLoaded(e){
     }
 
     document.querySelector("#content").innerHTML = bigString;
-
+    
     document.querySelector("#status").innerHTML = "<b>Success!</b>";
 }
 
