@@ -11,10 +11,8 @@ body{
 
 header{
 	text-align: center;
-}
-
-h1{
-	font-size: 80px;
+	display: flex;
+	justify-content: center;
 }
 
 @media only screen and (max-width: 600px){
@@ -60,10 +58,19 @@ h2{
 .card{
 	text-align: center;
 	min-width: 300px;
+	padding: 0.5rem;
+	margin: 0px;
 }
 
 .title{
 	font-size: 24px;
+}
+
+.image img {
+	width: 290px;
+	height: 400px;
+	object-fit: none;
+	object-position: 30% 65%;
 }
 
 footer{

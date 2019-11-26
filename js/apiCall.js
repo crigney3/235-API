@@ -144,7 +144,7 @@ function dataLoaded(e){
         let url = result.url;
 
         line = `<div class='card'><div class='title'><h4>${results[i].name}</h4></div>`
-        line += `<div class='image'><img src='${smallURL}' onerror="this.onerror=null;this.src='../images/ImageNotFound.png';" title='${results[i].name}' /></div></div>`;
+        line += `<div class='image'><img src='${smallURL}' onerror="this.onerror=null;this.src='../images/ImageNotFound3.png';style='object-fit=none;';" title='${results[i].name}' /></div></div>`;
 
         bigString += line;
     }
