@@ -11,10 +11,8 @@ body{
 
 header{
 	text-align: center;
-}
-
-h1{
-	font-size: 80px;
+	display: flex;
+	justify-content: center;
 }
 
 @media only screen and (max-width: 600px){
