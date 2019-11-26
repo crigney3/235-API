@@ -42,7 +42,19 @@ h2{
 }
 
 .button{
-	
+	background-color: #8E662A;
+	color: white;
+	border: 2px solid #2B1F0D;
+	padding: 0.5rem;
+	font-size: 16px;
+}
+
+.button:hover{
+
+}
+
+.button:active{
+	background-color: #513A18;
 }
 
 .searchers, #status, footer, .card{
