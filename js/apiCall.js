@@ -40,6 +40,8 @@ function checkboxFilter(e){
         (legendaryCheckbox.checked == false)) 
         return e;
 
+    // Loops through array, if the card rarity's checkbox
+    // is checked, it will be added to the returned array
     for(let i = 0; i < e.length; i++)
     {
         switch(e[i].rarity)
