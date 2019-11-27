@@ -133,4 +133,35 @@ h2{
 footer{
 	position: fixed;
 	bottom: 0;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+	align-items: center;
+}
+
+footer a {
+	color: gold;
+	text-decoration: none;
+	font-weight: bold;
+	margin-left: 2rem;
+}
+
+.doc{
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	width: 95%;
+	text-align: center;
+	background-color: rgba(201, 76, 76, 0.3);
+	margin: 1rem;
+}
+
+.doc a{
+	color: gold;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.doc ul {
+	list-style-type: none;
 }
